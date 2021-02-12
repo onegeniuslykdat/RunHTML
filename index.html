@@ -1,1 +1,85 @@
+<!doctype html>
+<html>
+  
+  <head>
+    
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    	<script src="assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+            custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['skin/assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+    </script>
+  </head>
+  
+  <body>
+    <div class="page-inner mt--5 tempShow">
+					<div class="row mt--2">
+						<div class="col-md-12">
+							<div class="card full-height">
+								<div class="card-header">
+									<div class="card-title"><i class="flaticon icon-wrench"></i>&nbsp; Practise HTML, CSS and Bootstrap here</div>
+									<div class="row">
+										<div class="col-md-6 col-xs-12">
+											<div class="form-group">									
+										 <h2>Type your code</h2>
+			<textarea class="form-control" id="myTextbox" onkeyup="styleRun()" cols="70" rows="10"></textarea>
+										 <br />
+										 <button type="button" id="btnRun" class="btn btn-success" onclick="run()">Run</button>
+										 <button type="button" id="btnClear" class="btn btn-danger" onclick="del()">Reset All</button>
+											</div>
+										</div>
+										<div class="col-md-6 col-xs-12"><div class="form-group">
+										<h2 id="myH2"><u>Result:</u></h2>
+										<div class="well" id="divArea"></div>
+									</div>
+										</div>                                     
+							</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+    
+    
+    <script>
+		var inputBox = document.getElementById("myTextbox");
+		var area = document.getElementById("divArea");
 
+		var buttonRun = document.getElementById("btnRun");
+		var buttonOverwrite = document.getElementById("btnOverwrite");
+
+		function styleRun() {
+			if (area.innerHTML != "") {
+				buttonRun.textContent = "Overwrite & Run";
+				buttonRun.className = "btn btn-primary";
+			}
+		}
+		function run() {
+			if (area.innerHTML == "") {
+				area.insertAdjacentHTML("beforeend", inputBox.value);
+			}
+			else {
+				area.innerHTML = "";
+				area.insertAdjacentHTML("beforeend", inputBox.value);
+			}
+		}
+		function del() {
+			area.innerHTML = "";
+			inputBox.value = "";
+			buttonRun.textContent = "Run";
+			buttonRun.className = "btn btn-success";
+		}
+    </script>
+    
+    <script src="assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="assets/js/core/popper.min.js"></script>
+	<script src="assets/js/core/bootstrap.min.js"></script>
+  </body>
+  
+</html>
